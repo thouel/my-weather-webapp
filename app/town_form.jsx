@@ -23,20 +23,19 @@ export default function TownForm({ callback }) {
       <form
         method='post'
         onSubmit={handleSubmit}
-        className='mb-4'
+        className='mb-4 bg-slate-200 border-2 rounded-none border-l-gray-600'
       >
-        <label>
-          &gt;&nbsp;
+        <label className=''>
           <input
             name='town'
             value={town}
             onChange={(e) => setTown(e.target.value)}
-            className='ml-1 hover:bg-gray-100 p-1'
+            className='ml-1 bg-slate-200 hover:bg-gray-100 p-1'
           />
         </label>
         <button
           type='submit'
-          className='hover:bg-gray-200 underline p-1'
+          className='hover:bg-gray-100 underline p-1'
         >
           Search
         </button>
