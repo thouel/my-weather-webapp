@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-export default function TownForm({ callback }) {
+export default function TownForm({ callback, error }) {
   const [town, setTown] = useState('Enter a town');
   const [send, setSend] = useState(false);
 
@@ -35,10 +35,13 @@ export default function TownForm({ callback }) {
         </label>
         <button
           type='submit'
-          className='hover:bg-gray-100 underline p-1'
+          className='hover:bg-gray-100 underline p-1 ml-4'
         >
           Search
         </button>
+        {error != null && error != '' && (
+          <span className='text-red-600 ml-4'>Not found</span>
+        )}
       </form>
     </>
   );

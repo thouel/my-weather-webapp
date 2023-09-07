@@ -8,6 +8,7 @@ export default function Page() {
   const [weather, setWeather] = useState(null);
   const [currentTown, setCurrentTown] = useState(null);
   const [lastTowns, setLastTowns] = useState([]);
+  const [error, setError] = useState('');
 
   function addToLastTowns(data) {
     // this town is already in the list
@@ -15,7 +16,7 @@ export default function Page() {
       return;
     }
 
-    setLastTowns((lastTowns) => [...lastTowns, data.toUpperCase()]);
+    setLastTowns((lastTowns) => [...lastTowns, data]);
   }
 
   useEffect(
@@ -25,7 +26,6 @@ export default function Page() {
 
         console.log(`Town:${data}`);
 
-        addToLastTowns(data);
         setWeather(null);
 
         // Pass it to some API
@@ -36,7 +36,16 @@ export default function Page() {
             'content-type': 'application/json',
           },
         }).then(async (result) => {
-          setWeather(await result.json());
+          console.log(result);
+          const j = await result.json();
+          console.log(j.message);
+          if (j.message != null) {
+            setError(j.message);
+          } else {
+            setWeather(j);
+            addToLastTowns(j.location.name);
+            setError('');
+          }
         });
       }
       fetchWeather(currentTown);
@@ -46,7 +55,10 @@ export default function Page() {
 
   return (
     <>
-      <TownForm callback={setCurrentTown} />
+      <TownForm
+        callback={setCurrentTown}
+        error={error}
+      />
       <Card weather={weather} />
       <LastTowns
         lastTowns={lastTowns}
