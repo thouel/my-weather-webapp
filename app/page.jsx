@@ -2,10 +2,22 @@
 import { useEffect, useState } from 'react';
 import Card from './card';
 import TownForm from './town_form';
+import LastTowns from './last_towns';
 
 export default function Page() {
   const [weather, setWeather] = useState(null);
   const [currentTown, setCurrentTown] = useState(null);
+  const [lastTowns, setLastTowns] = useState([]);
+
+  function addToLastTowns(data) {
+    // this town is already in the list
+    if (lastTowns.indexOf(data) != -1) {
+      return;
+    }
+
+    setLastTowns((lastTowns) => [...lastTowns, data.toUpperCase()]);
+  }
+
   useEffect(
     function effectFunction() {
       async function fetchWeather(data) {
@@ -13,6 +25,7 @@ export default function Page() {
 
         console.log(`Town:${data}`);
 
+        addToLastTowns(data);
         setWeather(null);
 
         // Pass it to some API
@@ -35,6 +48,10 @@ export default function Page() {
     <>
       <TownForm callback={setCurrentTown} />
       <Card weather={weather} />
+      <LastTowns
+        lastTowns={lastTowns}
+        updateTown={setCurrentTown}
+      />
     </>
   );
 }

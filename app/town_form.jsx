@@ -26,6 +26,7 @@ export default function TownForm({ callback }) {
         className='mb-4'
       >
         <label>
+          &gt;&nbsp;
           <input
             name='town'
             value={town}

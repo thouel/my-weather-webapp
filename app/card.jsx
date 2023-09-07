@@ -1,8 +1,10 @@
 import Image from 'next/image';
 import './card.modules.css';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function Card({ weather }) {
-  if (weather == null) return <h2>Loading...</h2>;
+  if (weather == null) return <Skeleton count={8} />;
 
   return (
     <div className='rounded-md border-4 weather-card text-white'>
