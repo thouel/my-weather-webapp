@@ -8,7 +8,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body>{children}</body>
+      <body className='max-w-lg justify-center items-center m-10'>
+        {children}
+      </body>
     </html>
   );
 }

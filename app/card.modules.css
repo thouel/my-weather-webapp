@@ -1,0 +1,10 @@
+:root {
+  --main-bg-color: #96b5e5;
+  --main-border-color: #156bec9a;
+}
+
+.weather-card {
+  background-color: var(--main-bg-color);
+  border-color: var(--main-border-color);
+  padding: 4px;
+}
