@@ -1,3 +1,5 @@
+import './last_towns.modules.css';
+
 export default function LastTowns({ lastTowns, updateTown }) {
   if (lastTowns == null || lastTowns.length <= 0) {
     return <p>No town</p>;
@@ -8,7 +10,7 @@ export default function LastTowns({ lastTowns, updateTown }) {
         {lastTowns.map((town) => (
           <li
             key={town}
-            className='inline mr-2'
+            className='inline pr-2 mr-2 border-r-2 last-town'
           >
             <button
               onClick={(e) => {

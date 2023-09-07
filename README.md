@@ -7,10 +7,7 @@ Made to be accessed on all devices (responsive)
 
 ## How ?
 
-Use [weatherstack.com](https://weatherstack.com/documentation) API. The free version of the API is limited to 1000 calls / month so we have two watch dogs to make sure we do not exceed that monthly limit :
-
-- By default, weather data is pulled once a day at 6:30am, Paris, France time
-- It is possible to force a new pull once per hour
+Use [weatherstack.com](https://weatherstack.com/documentation) API. The free version of the API is limited to 1000 calls / month so you need to get your own API_KEY (for free) to play with it.
 
 Components architecture:
 
@@ -21,6 +18,8 @@ Components architecture:
 - app/town_form.jsx: Simple single input form
 
 - app/card.jsx: Display the current weather in the town selected by the user
+
+- app/last_towns.jsx: Display the last selected towns
 
 - app/api/weather/route.js: The API handling the call to the external service [weatherstack.com](https://weatherstack.com/documentation) API.
 
