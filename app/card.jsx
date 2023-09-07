@@ -5,20 +5,30 @@ export default function Card({ weather }) {
   if (weather == null) return <h2>Loading...</h2>;
 
   return (
-    <div className='rounded-md border-4 weather-card'>
-      <div className='grid grid-flow-row grid-cols-3 grid-rows-2'>
+    <div className='rounded-md border-4 weather-card text-white'>
+      <div className='card-title border-b-4'>
+        <span className='font-bold text-lg text-black'>
+          {weather.location.name}&nbsp;
+        </span>
+        <span className='font-light text-sm'>{weather.location.country}</span>
+        <span className='text-right font-light text-sm'>
+          , at {weather.location.localtime}
+        </span>
+      </div>
+      <div className='grid grid-flow-row grid-cols-3 grid-rows-2 mt-2 gap-2'>
         <div>
-          <span className='font-bold'>Temperature:</span>
           <ul>
             <li>
-              <span className='ml-2'>
-                Measured {weather.current.temperature}°
+              <span className='card-important'>
+                {weather.current.temperature}°
               </span>
+              <span className='card-notimportant'>&nbsp;Measured</span>
             </li>
             <li>
-              <span className='ml-2'>
-                Feels like {weather.current.feelslike}°
+              <span className='card-important'>
+                {weather.current.feelslike}°
               </span>
+              <span className='card-notimportant'>&nbsp;Feels like</span>
             </li>
           </ul>
         </div>
@@ -32,42 +42,41 @@ export default function Card({ weather }) {
         </div>
         <div>
           <p>
-            <span className='font-bold'>Air humidity: </span>
-            {weather.current.humidity}%
+            <span className='card-important'>{weather.current.humidity}%</span>
+            <span className='card-notimportant'>&nbsp;Humidity</span>
           </p>
           <p>
-            {weather.current.precip <= 0
-              ? 'No precipitation actually'
-              : 'Raining (' + weather.current.precip + 'mm/h)'}
-          </p>
-          <p>
-            <span className='font-bold'>UV Index: </span>
-            {weather.current.uv_index}
+            <span className='card-important'>{weather.current.uv_index}</span>
+            <span className='card-notimportant'>&nbsp;UV Index</span>
           </p>
         </div>
         <div className=''>
           <p>
-            <span className='font-bold'>Visibility at </span>
-            {weather.current.visibility} km
-          </p>{' '}
+            <span className='card-notimportant'>
+              <span className='text-black'>Visibility</span> at{' '}
+              {weather.current.visibility} km
+            </span>
+          </p>
           <p>
-            <span className='font-bold'>Air pressure at </span>{' '}
-            {weather.current.pressure} hPA
+            <span className='card-notimportant'>
+              <span className='text-black'>Air pressure</span> at{' '}
+              {weather.current.pressure} hPA
+            </span>
           </p>
         </div>
         <div>
-          <span className='font-bold'>Wind:</span>
-          <ul>
-            <li>
-              {weather.current.wind_speed} km/h, to {weather.current.wind_dir} (
-              {weather.current.wind_degree}°)
-            </li>
-          </ul>
+          <span className='text-black'>Wind </span>
+          <span className=''>{weather.current.wind_dir}</span>
+          <span className='card-notimportant'>
+            &nbsp;{weather.current.wind_speed} km/h,{' '}
+            {weather.current.wind_degree}°
+          </span>
+          <p className='card-notimportant'>
+            {weather.current.precip <= 0
+              ? 'No precipitation actually'
+              : 'Raining (' + weather.current.precip + 'mm/h)'}
+          </p>
         </div>
-      </div>
-      <div className='text-right font-light text-sm'>
-        in {weather.location.name} ({weather.location.country}), at{' '}
-        {weather.location.localtime}
       </div>
     </div>
   );

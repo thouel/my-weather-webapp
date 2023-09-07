@@ -3,14 +3,6 @@ import { useEffect, useState } from 'react';
 import Card from './card';
 import TownForm from './town_form';
 
-function getDate() {
-  const today = new Date();
-  const month = today.getMonth() + 1;
-  const year = today.getFullYear();
-  const day = today.getDate();
-  return `${day}/${month}/${year}`;
-}
-
 export default function Page() {
   const [weather, setWeather] = useState(null);
   const [currentTown, setCurrentTown] = useState(null);

@@ -8,3 +8,20 @@
   border-color: var(--main-border-color);
   padding: 4px;
 }
+
+.card-title {
+  border-bottom-color: var(--main-border-color);
+}
+
+.card-important {
+  font-size: 1.125rem /* 18px */;
+  line-height: 1.75rem /* 28px */;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.card-notimportant {
+  font-weight: 300;
+  font-size: 0.875rem /* 14px */;
+  line-height: 1.25rem /* 20px */;
+}
