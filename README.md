@@ -3,7 +3,6 @@
 ## What ?
 
 A simple weather webapp giving temperature, wind, pressure, precipitation, humidity, cloud, uv index and visibility.
-Made to be accessed on all devices (responsive)
 
 ## How ?
 
